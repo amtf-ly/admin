@@ -1,0 +1,46 @@
+{
+	"bsonType": "object",
+	"permission": {
+		"read": true,
+		"create": "'gly' in auth.role",
+		"update": "'gly' in auth.role",
+		"delete": "'gly' in auth.role"
+	},
+	"properties": {
+		"_id": {
+			"description": "系统自动生成"
+		},
+		"biaoti": {
+			"bsonType": "string",
+			"title": "标题",
+			"trim": "both"
+		},
+		"link": {
+			"title": "link",
+			"bsonType": "string",
+			"trim": "both"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "type",
+			"trim": "both",
+			"defaultValue": "link",
+			"enum": ["link", "button", "其他"]
+		},
+		"lanmu": {
+			"bsonType": "string",
+			"title": "栏目",
+			"trim": "both",
+			"defaultValue": "置顶",
+			"enum": ["置顶", "最新消息", "广告", "其他"]
+		},
+		"xuhao": {
+			"bsonType": "int",
+			"title": "序号",
+			"defaultValue": 9,
+			"componentForEdit": {
+				"name": "uni-number-box"
+			}
+		}
+	}
+}

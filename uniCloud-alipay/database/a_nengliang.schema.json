@@ -1,0 +1,73 @@
+{
+	"bsonType": "object",
+	"required": ["user_id"],
+	"permission": {
+		"read": true,
+		"create": "'gly' in auth.role",
+		"update": "'gly' in auth.role",
+		"delete": "'gly' in auth.role"
+	},
+	"properties": {
+		"_id": {
+			"description": "系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户名",
+			"description": "users._id",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			},
+			"enum": {
+				"collection": "uni-id-users",
+				"field": "username as text, _id as value,mobile"
+			}
+		},
+		"appid_id": {
+			"bsonType": "string",
+			"title": "appid_id",
+			"description": "appid_id，参考`uni-news-categories`表",
+			"foreignKey": "opendb-app-list.appid",
+			"enum": {
+				"collection": "opendb-app-list",
+				"field": "name as text, appid as value"
+			}
+		},
+
+		"chongdian": {
+			"bsonType": "bool",
+			"title": "充电",
+			"description": "是否已充电",
+			"defaultValue": false
+		},
+		"gengshangcenglou": {
+			"bsonType": "bool",
+			"title": "更上层楼",
+			"description": "更上层楼",
+			"defaultValue": false
+		},
+
+		"chongdianjine": {
+			"bsonType": "int",
+			"title": "充电金额",
+			"description": "充电金额",
+			"defaultValue": 8800
+		},
+		"tuiguanggongxian": {
+			"bsonType": "int",
+			"title": "推广贡献值",
+			"description": "推广贡献值",
+			"defaultValue": 0
+		},
+		"daoqi_date": {
+			"bsonType": "timestamp",
+			"title": "到期时间",
+			"description": "到期时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	},
+	"version": "0.0.1"
+}
